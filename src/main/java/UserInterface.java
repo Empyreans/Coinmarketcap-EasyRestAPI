@@ -35,16 +35,22 @@ public class UserInterface {
                             System.out.println("Coin mit gewaehlten Namen nicht vorhanden\n");
                         }
                         break;
+                    case "a":
+                        coinsOperations.printCoinDataEveryCoin();
+                        break;
                     case "p":
                         coinsOperations.getHighestPricedCoin().printCoinData();
                         break;
                     case "r":
                         coinsOperations.getHighestRankedCoin().printCoinData();
                         break;
-                    case "a":
-                        apiConnection.requestAPI();
+                    case "g":
+                        System.out.println("Bitte gib den gewuenschten Grenzrang ein: ");
+                        String indexString = reader.nextLine();
+                        int index = Integer.parseInt(indexString);
+                        apiConnection.setRankStartIndex(index);
+                        System.out.println("Grenzrang auf " + indexString + " gesetzt\n");
                         this.coinsOperations = apiConnection.getCoinsOperations();
-                        System.out.println("Update erfolgreich\n");
                         break;
                     case "x":
                         userDialogueActive = false;
@@ -58,10 +64,11 @@ public class UserInterface {
 
     private void printStandardDialogueOptions(){
         System.out.println("Suchen nach Coin <s>");
+        System.out.println("Gebe alle Coins aus <a>");
         System.out.println("Gebe teuersten Coin aus <p>");
         System.out.println("Gebe hoechstrangingsten Coin aus <r>");
-        System.out.println("API aktualisieren <a>");
+        System.out.println("Rang-Grenze bestimmen <g>");
         System.out.println("Programm beenden <x>");
-
     }
+
 }

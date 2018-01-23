@@ -43,6 +43,10 @@ public class CoinsOperations {
         return resultCoin;
     }
 
-
+    public void printCoinDataEveryCoin(){
+        for (int i = 0; i < availableCoins.length ; i++){
+            availableCoins[i].printCoinData();
+        }
+    }
 
 }
